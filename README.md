@@ -9,11 +9,11 @@ Let us see what we are going to work on today.
 #### Table of Contents
   - [Install Terraform](#Installation)
   - [Create an security group with ssh and web ports enabled](#create-an-security-group-with-ssh-and-web-ports-enabled)
-  - [Launch EC2 instance](#description)
-  - [In this Ec2 instance use the key and security group which we have created](#instructions)
-  - [Launch one Volume (EBS) and mount that volume into /var/www/html](#reporting-issues)
-  - [Developer have uploded the code into github repo also the repo has some images](#user-privacy)
-  - [Copy the github repo code into /var/www/html](#disclaimer)
+  - [Launch EC2 instance](#launch-ec2-instance)
+  - [In this Ec2 instance use the key and security group which we have created](#in-this-ec2-instance-use-the-key-and-security-group-which-we-have-created)
+  - [Launch one Volume (EBS) and mount that volume into /var/www/html](#launch-one-volume-ebs-and-mount-that-volume-into-varwwwhtml)
+  - [Developer have uploded the code into github repo also the repo has some images](#developer-have-uploded-the-code-into-github-repo-also-the-repo-has-some-images)
+  - [Copy the github repo code into /var/www/html](#copy-the-github-repo-code-into-varwwwhtml)
   - [Create S3 bucket and copy or deploy the images from github repo into the s3 bucket and change the permission to public readable](#create-s3-bucket-and-copy-or-deploy-the-images-from-github-repo-into-the-s3-bucket-and-change-the-permission-to-public-readable)
 ## Installation
 Download:  [Terraform](https://www.terraform.io/downloads.html)
