@@ -2,186 +2,47 @@
 
 
 >#### Infrastructure as Code(IAC) to deploy a completely reliable and automated production Environment using Terraform
+![terraform-x-aws-1](https://user-images.githubusercontent.com/33370942/84769270-2facf800-aff3-11ea-8dc2-ecb87a54de58.png)
 
-![Build Status](https://www.datocms-assets.com/2885/1558374879-hc-aws-on-demand.svg)
+Terrafrom is the most widely used product for Infrastructure as a Service. By using terraform infrastructure handling is a piece of cake.
+Let us see what we are going to work on today.
+#### Table of Contents
+  - [Install Terraform](#Installation)
+  - [Create an security group with ssh and web ports enabled](#create-an-security-group-with-ssh-and-web-ports-enabled)
+  - [Launch EC2 instance](#description)
+  - [In this Ec2 instance use the key and security group which we have created](#instructions)
+  - [Launch one Volume (EBS) and mount that volume into /var/www/html](#reporting-issues)
+  - [Developer have uploded the code into github repo also the repo has some images](#user-privacy)
+  - [Copy the github repo code into /var/www/html](#disclaimer)
+  - [Create S3 bucket and copy or deploy the images from github repo into the s3 bucket and change the permission to public readable](#create-s3-bucket-and-copy-or-deploy-the-images-from-github-repo-into-the-s3-bucket-and-change-the-permission-to-public-readable)
+## Installation
+Download:  [Terraform](https://www.terraform.io/downloads.html)
 
-Terrafrom is the most widely used product for Infrastructure as a Service. By using terraform infrastructure handling is a piece of cake. Let us see what we are going to work on today.
-## Table of Contents
-
-  - [Create an security group with ssh and web ports enabled](#Create-an-security-group-with-ssh-and-web-ports-enabled)
-  - [Table of Contents](#table-of-contents)
-  - [Description](#description)
-  - [Instructions](#instructions)
-  - [Reporting Issues](#reporting-issues)
-  - [User Privacy](#user-privacy)
-  - [Disclaimer](#disclaimer)
-
-
-# New Features!
-
-  - Import a HTML file and watch it magically convert to Markdown
-  - Drag and drop images (requires your Dropbox account be linked)
-
-
-You can also:
-  - Import and save files from GitHub, Dropbox, Google Drive and One Drive
-  - Drag and drop markdown and HTML files into Dillinger
-  - Export documents as Markdown, HTML and PDF
-
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
-
-
-
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
-
-### Tech
-
-Dillinger uses a number of open source projects to work properly:
-
-* [AngularJS] - HTML enhanced for web apps!
-* [Ace Editor] - awesome web-based text editor
-* [markdown-it] - Markdown parser done right. Fast and easy to extend.
-* [Twitter Bootstrap] - great UI boilerplate for modern web apps
-* [node.js] - evented I/O for the backend
-* [Express] - fast node.js network app framework [@tjholowaychuk]
-* [Gulp] - the streaming build system
-* [Breakdance](https://breakdance.github.io/breakdance/) - HTML to Markdown converter
-* [jQuery] - duh
-
-And of course Dillinger itself is open source with a [public repository][dill]
- on GitHub.
-
-### Installation
-
-Dillinger requires [Node.js](https://nodejs.org/) v4+ to run.
-
-Install the dependencies and devDependencies and start the server.
+Before creating infrastructure let's see Some Basic Terraform Commands
+Go to **workspace** 
+To initialize or install plugins  :
 
 ```sh
-$ cd dillinger
-$ npm install -d
-$ node app
+$ terraform init
 ```
-
-For production environments...
-
+To check the code:
 ```sh
-$ npm install --production
-$ NODE_ENV=production node app
+$ terraform validate
 ```
-
-## Create an security group with ssh and web ports enabled
-
-  - Create an security group with ssh and web ports enabled
-  - 
-  - Magic
-### Plugins
-
-Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
-
-| Plugin | README |
-| ------ | ------ |
-| Dropbox | [plugins/dropbox/README.md][PlDb] |
-| GitHub | [plugins/github/README.md][PlGh] |
-| Google Drive | [plugins/googledrive/README.md][PlGd] |
-| OneDrive | [plugins/onedrive/README.md][PlOd] |
-| Medium | [plugins/medium/README.md][PlMe] |
-| Google Analytics | [plugins/googleanalytics/README.md][PlGa] |
-
-
-### Development
-
-Want to contribute? Great!
-
-Dillinger uses Gulp + Webpack for fast developing.
-Make a change in your file and instantaneously see your updates!
-
-Open your favorite Terminal and run these commands.
-
-First Tab:
+To run or deploy:
 ```sh
-$ node app
+$ terraform apply
 ```
-
-Second Tab:
+To destroy the complete infrastructure:
 ```sh
-$ gulp watch
+$ terraform destroy
 ```
 
-(optional) Third:
-```sh
-$ karma test
-```
-#### Building for source
-For production release:
-```sh
-$ gulp build --prod
-```
-Generating pre-built zip archives for distribution:
-```sh
-$ gulp build dist --prod
-```
-### Docker
-Dillinger is very easy to install and deploy in a Docker container.
-
-By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
-
-```sh
-cd dillinger
-docker build -t joemccann/dillinger:${package.json.version} .
-```
-This will create the dillinger image and pull in the necessary dependencies. Be sure to swap out `${package.json.version}` with the actual version of Dillinger.
-
-Once done, run the Docker image and map the port to whatever you wish on your host. In this example, we simply map port 8000 of the host to port 8080 of the Docker (or whatever port was exposed in the Dockerfile):
-
-```sh
-docker run -d -p 8000:8080 --restart="always" <youruser>/dillinger:${package.json.version}
-```
-
-Verify the deployment by navigating to your server address in your preferred browser.
-
-```sh
-127.0.0.1:8000
-```
-
-#### Kubernetes + Google Cloud
-
-See [KUBERNETES.md](https://github.com/joemccann/dillinger/blob/master/KUBERNETES.md)
-
-
-### Todos
-
- - Write MORE Tests
- - Add Night Mode
-
-License
-----
-
-MIT
-
-
-**Free Software, Hell Yeah!**
-
-[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
-
-
-   [dill]: <https://github.com/joemccann/dillinger>
-   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
-   [john gruber]: <http://daringfireball.net>
-   [df1]: <http://daringfireball.net/projects/markdown/>
-   [markdown-it]: <https://github.com/markdown-it/markdown-it>
-   [Ace Editor]: <http://ace.ajax.org>
-   [node.js]: <http://nodejs.org>
-   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
-   [jQuery]: <http://jquery.com>
-   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
-   [express]: <http://expressjs.com>
-   [AngularJS]: <http://angularjs.org>
-   [Gulp]: <http://gulpjs.com>
-
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+#### Create an security group with ssh and web ports enabled
+#### Create S3 bucket and copy or deploy the images from github repo into the s3 bucket and change the permission to public readable
+#### Launch EC2 instance
+#### In this Ec2 instance use the key and security group which we have created
+#### Launch one Volume (EBS) and mount that volume into /var/www/html
+#### Developer have uploded the code into github repo also the repo has some images
+#### Copy the github repo code into /var/www/html
+#### Create S3 bucket and copy or deploy the images from github repo into the s3 bucket and change the permission to public readable
