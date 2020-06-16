@@ -8,7 +8,7 @@
 Terrafrom is the most widely used product for Infrastructure as a Service. By using terraform infrastructure handling is a piece of cake. Let us see what we are going to work on today.
 ## Table of Contents
 
-  - [Create an security group with ssh and web ports enabled](#Create-an-security-group-with-ssh-and-web-portsenabled)
+  - [Create an security group with ssh and web ports enabled](#Create-an-security-group-with-ssh-and-web-ports-enabled)
   - [Table of Contents](#table-of-contents)
   - [Description](#description)
   - [Instructions](#instructions)
